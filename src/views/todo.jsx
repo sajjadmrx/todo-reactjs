@@ -29,7 +29,7 @@ class Todo extends Component {
                     </div>
                     <div className="app-container d-flex align-items-center justify-content-center flex-column ng-scope ng-binding" ng-app="myApp" ng-controller="myController">
                         <FormTodo todos={this.state.todos} addTodo={this.addToDo} />
-                        <TableTodos todos={this.state.todos} />
+                        <TableTodos todos={this.state.todos} deleteTodo={this.deleteTodo.bind(this)} />
                     </div>
 
                 </section>
@@ -44,6 +44,13 @@ class Todo extends Component {
         storage.addTodo(todo)
     }
 
+    deleteTodo(id) {
+        storage.deleteOne(id)
+        const todos = storage.get();
+        this.setState({
+            todos: todos
+        })
+    }
 
 
 }

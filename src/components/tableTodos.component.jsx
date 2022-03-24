@@ -1,4 +1,5 @@
 import React from "react";
+import Stroage from "../common/storeage";
 import TodoItem from "./todoItem.component";
 class TableTodos extends React.Component {
     constructor(props) {
@@ -11,7 +12,6 @@ class TableTodos extends React.Component {
                 <table className="table table-hover table-bordered  w-100">
                     <thead>
                         <tr>
-
                             <th>Todo</th>
                             <th>status</th>
                             <th>Actions</th>
@@ -19,7 +19,7 @@ class TableTodos extends React.Component {
                     </thead>
                     <tbody>
                         {this.props.todos.map((todo, index) => {
-                            return <TodoItem todo={todo} key={index} />
+                            return <TodoItem todo={todo} key={index} deleteHandle={this.handleDelete.bind(this, todo.id)} />
                         })}
                     </tbody>
                 </table>
@@ -27,6 +27,11 @@ class TableTodos extends React.Component {
         )
     }
 
+
+    handleDelete(id) {
+        this.props.deleteTodo(id)
+
+    }
 }
 
 export default TableTodos;

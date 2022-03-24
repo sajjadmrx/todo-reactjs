@@ -31,7 +31,7 @@ class FormTodo extends React.Component {
         const todoTitle = target.todo.value;
 
         const todo = {
-            // id: this.state.todos.length + 1,
+            id: Date.now(),
             name: todoTitle,
             completed: false
         }

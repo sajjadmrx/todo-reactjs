@@ -18,7 +18,7 @@ function TodoItem(props) {
                     <button type="button" className="btn btn-primary"  >
                         <i className="fa fa-pencil"></i>
                     </button>
-                    <button type="button" className="btn btn-danger">
+                    <button type="button" className="btn btn-danger" onClick={props.deleteHandle}>
                         <i className="fa fa-trash"></i>
                     </button>
                     {/* button check */}
