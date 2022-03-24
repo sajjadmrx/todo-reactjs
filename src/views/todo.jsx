@@ -2,11 +2,14 @@ import { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import FormTodo from '../components/form.component'
 import TableTodos from '../components/tableTodos.component'
+import Stroage from '../common/storeage'
+
+const storage = new Stroage('todos')
 class Todo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            todos: [],
+            todos: storage.get(),
         }
 
     }
@@ -38,7 +41,7 @@ class Todo extends Component {
         this.setState({
             todos: [...this.state.todos, todo]
         })
-        console.log(this.state.todos)
+        storage.addTodo(todo)
     }
 
 

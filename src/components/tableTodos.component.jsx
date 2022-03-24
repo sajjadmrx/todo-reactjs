@@ -11,7 +11,7 @@ class TableTodos extends React.Component {
                 <table className="table table-hover table-bordered  w-100">
                     <thead>
                         <tr>
-                            <th>ID</th>
+
                             <th>Todo</th>
                             <th>status</th>
                             <th>Actions</th>
