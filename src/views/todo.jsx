@@ -26,7 +26,7 @@ class Todo extends Component {
                     </div>
                     <div className="app-container d-flex align-items-center justify-content-center flex-column ng-scope ng-binding" ng-app="myApp" ng-controller="myController">
                         <FormTodo todos={this.state.todos} addTodo={this.addToDo} />
-                        <TableTodos />
+                        <TableTodos todos={this.state.todos} />
                     </div>
 
                 </section>

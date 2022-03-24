@@ -1,5 +1,5 @@
 import React from "react";
-
+import TodoItem from "./todoItem.component";
 class TableTodos extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +18,9 @@ class TableTodos extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-
+                        {this.props.todos.map((todo, index) => {
+                            return <TodoItem todo={todo} key={index} />
+                        })}
                     </tbody>
                 </table>
             </div>
