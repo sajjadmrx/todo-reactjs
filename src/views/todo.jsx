@@ -2,16 +2,17 @@ import { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import FormTodo from '../components/form.component'
 import TableTodos from '../components/tableTodos.component'
-import Storage from '../common/Storage'
-import { sortWihtCreatedAt, sortWithCompleted, sortWithCreatedAtAndCompleted } from '../common/helper'
 
-const storage = new Storage('todos')
+import { sortWihtCreatedAt, sortWithCompleted, sortWithCreatedAtAndCompleted } from '../common/helper'
+import TodoQuerys from '../common/todoQuerys'
+
+const todoQuerys = new TodoQuerys('todos')
 class Todo extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            todos: sortWithCreatedAtAndCompleted(storage.get()),
+            todos: sortWithCreatedAtAndCompleted(todoQuerys.getAll()),
         }
 
     }
@@ -40,26 +41,25 @@ class Todo extends Component {
     }
 
     addToDo = (todo) => {
-        const newStates = [...this.state.todos, todo]
 
-        const oldTodos = sortWihtCreatedAt(storage.get())
+        const oldTodos = sortWihtCreatedAt(todoQuerys.getAll())
         oldTodos.unshift(todo)
         this.setState({
             todos: oldTodos
         })
-        storage.addTodo(todo)
+        todoQuerys.addTodo(todo)
     }
 
     deleteTodo(id) {
-        storage.deleteOne(id)
-        const todos = storage.get();
+        todoQuerys.deleteById(id)
+        const todos = todoQuerys.getAll();
         this.setState({
             todos: sortWithCreatedAtAndCompleted(todos)
         })
     }
 
     toggleComplete(id) {
-        const todos = storage.get();
+        const todos = todoQuerys.getAll();
         const todo = todos.find(todo => todo.id === id);
         if (!todo) {
             return alert('Todo not found')
@@ -67,8 +67,8 @@ class Todo extends Component {
 
         todo.completed = !todo.completed;
 
-        storage.clear();
-        storage.add(todos)
+        todoQuerys.deleteAll();
+        todoQuerys.db.add(todos)
         this.setState({ todos: sortWithCompleted(todos) })
 
     }

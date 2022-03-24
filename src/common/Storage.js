@@ -1,7 +1,6 @@
 class Storage {
     constructor(key) {
         this.key = key;
-
     }
 
     add(value) {
@@ -18,13 +17,6 @@ class Storage {
         return json
     }
 
-    addTodo(todo) {
-
-        todo.createdAt = new Date().getTime();
-        const items = this.get()
-        items.push(todo);
-        this.add(items);
-    }
 
     deleteOne(id) {
         const items = this.get();
