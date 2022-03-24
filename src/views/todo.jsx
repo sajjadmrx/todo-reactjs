@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import FormTodo from '../components/form.component'
 import TableTodos from '../components/tableTodos.component'
 import Stroage from '../common/storeage'
+import { sortWihtCreatedAt, sortWithCompleted, sortWithCreatedAtAndCompleted } from '../common/helper'
 
 const storage = new Stroage('todos')
 class Todo extends Component {
@@ -10,7 +11,7 @@ class Todo extends Component {
         super(props)
 
         this.state = {
-            todos: storage.get(),
+            todos: sortWithCreatedAtAndCompleted(storage.get()),
         }
 
     }
@@ -39,8 +40,12 @@ class Todo extends Component {
     }
 
     addToDo = (todo) => {
+        const newStates = [...this.state.todos, todo]
+
+        const oldTodos = sortWihtCreatedAt(storage.get())
+        oldTodos.unshift(todo)
         this.setState({
-            todos: [...this.state.todos, todo]
+            todos: oldTodos
         })
         storage.addTodo(todo)
     }
@@ -49,7 +54,7 @@ class Todo extends Component {
         storage.deleteOne(id)
         const todos = storage.get();
         this.setState({
-            todos: todos
+            todos: sortWithCreatedAtAndCompleted(todos)
         })
     }
 
@@ -64,7 +69,7 @@ class Todo extends Component {
 
         storage.clear();
         storage.add(todos)
-        this.setState({ todos: todos })
+        this.setState({ todos: sortWithCompleted(todos) })
 
     }
 

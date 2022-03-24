@@ -15,11 +15,12 @@ class Stroage {
         const items = localStorage.getItem(this.key);
         if (!items) return [];
         const json = JSON.parse(items)
-
         return json
     }
 
     addTodo(todo) {
+
+        todo.createdAt = new Date().getTime();
         const items = this.get()
         items.push(todo);
         this.add(items);
@@ -35,7 +36,6 @@ class Stroage {
     clear() {
         this.add([])
     }
-
 
 
 
