@@ -5,11 +5,12 @@ class FormTodo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     render() {
         return (
-            <form onSubmit={this.#handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <div className="d-flex align-items-center mb-3">
                     <div className="form-group mr-3 mb-0">
                         <input ng-model="yourTask" type="text" name="todo" className="form-control ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" id="formGroupExampleInput" placeholder="Enter a task here">
@@ -24,11 +25,17 @@ class FormTodo extends React.Component {
         )
     }
 
-    #handleSubmit(e) {
+    handleSubmit(e) {
         e.preventDefault();
         const target = e.target;
-        const todo = target.todo.value;
-        console.log(todo);
+        const todoTitle = target.todo.value;
+
+        const todo = {
+            // id: this.state.todos.length + 1,
+            name: todoTitle,
+            completed: false
+        }
+        this.props.addTodo(todo)
         // this.props
     }
 }

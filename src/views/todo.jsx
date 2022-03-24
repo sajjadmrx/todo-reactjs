@@ -5,7 +5,10 @@ import TableTodos from '../components/tableTodos.component'
 class Todo extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            todos: [],
+        }
+
     }
 
     render() {
@@ -22,7 +25,7 @@ class Todo extends Component {
                         </div>
                     </div>
                     <div className="app-container d-flex align-items-center justify-content-center flex-column ng-scope ng-binding" ng-app="myApp" ng-controller="myController">
-                        <FormTodo />
+                        <FormTodo todos={this.state.todos} addTodo={this.addToDo} />
                         <TableTodos />
                     </div>
 
@@ -30,6 +33,16 @@ class Todo extends Component {
             </div>
         )
     }
+
+    addToDo = (todo) => {
+        this.setState({
+            todos: [...this.state.todos, todo]
+        })
+        console.log(this.state.todos)
+    }
+
+
+
 }
 
 
