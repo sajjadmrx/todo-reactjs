@@ -1,4 +1,4 @@
-class Stroage {
+class Storage {
     constructor(key) {
         this.key = key;
 
@@ -41,4 +41,4 @@ class Stroage {
 
 }
 
-export default Stroage;
+export default Storage;

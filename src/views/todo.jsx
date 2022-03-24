@@ -2,10 +2,10 @@ import { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import FormTodo from '../components/form.component'
 import TableTodos from '../components/tableTodos.component'
-import Stroage from '../common/storeage'
+import Storage from '../common/Storage'
 import { sortWihtCreatedAt, sortWithCompleted, sortWithCreatedAtAndCompleted } from '../common/helper'
 
-const storage = new Stroage('todos')
+const storage = new Storage('todos')
 class Todo extends Component {
     constructor(props) {
         super(props)

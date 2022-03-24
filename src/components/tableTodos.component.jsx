@@ -1,5 +1,5 @@
 import React from "react";
-import Stroage from "../common/storeage";
+
 import TodoItem from "./todoItem.component";
 class TableTodos extends React.Component {
     constructor(props) {
