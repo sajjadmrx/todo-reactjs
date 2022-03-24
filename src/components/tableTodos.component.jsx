@@ -20,7 +20,9 @@ class TableTodos extends React.Component {
                     <tbody>
                         {this.props.todos.map((todo, index) => {
                             return <TodoItem todo={todo} key={index} deleteHandle={this.handleDelete.bind(this, todo.id)}
-                                toggleHandle={this.handleToggleComplete.bind(this, todo.id)} />
+                                toggleHandle={this.handleToggleComplete.bind(this, todo.id)}
+                                updateTodo={this.props.updateTodo}
+                            />
                         })}
                     </tbody>
                 </table>

@@ -32,7 +32,9 @@ class Todo extends Component {
                     </div>
                     <div className="app-container d-flex align-items-center justify-content-center flex-column ng-scope ng-binding" ng-app="myApp" ng-controller="myController">
                         <FormTodo todos={this.state.todos} addTodo={this.addToDo} />
-                        <TableTodos todos={this.state.todos} deleteTodo={this.deleteTodo.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
+                        <TableTodos todos={this.state.todos} deleteTodo={this.deleteTodo.bind(this)} toggleComplete={this.toggleComplete.bind(this)}
+                            updateTodo={this.update.bind(this)} />
+
                     </div>
 
                 </section>
@@ -71,6 +73,16 @@ class Todo extends Component {
         todoQuerys.db.add(todos)
         this.setState({ todos: sortWithCompleted(todos) })
 
+    }
+
+    update(todoUpdated) {
+        const todos = todoQuerys.getAll()
+
+        const index = todos.findIndex(todo => todo.id === todoUpdated.id)
+        todos[index] = todoUpdated
+        todoQuerys.deleteAll()
+        todoQuerys.db.add(todos)
+        this.setState({ todos: sortWithCreatedAtAndCompleted(todos) })
     }
 
 
