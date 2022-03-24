@@ -19,7 +19,8 @@ class TableTodos extends React.Component {
                     </thead>
                     <tbody>
                         {this.props.todos.map((todo, index) => {
-                            return <TodoItem todo={todo} key={index} deleteHandle={this.handleDelete.bind(this, todo.id)} />
+                            return <TodoItem todo={todo} key={index} deleteHandle={this.handleDelete.bind(this, todo.id)}
+                                toggleHandle={this.handleToggleComplete.bind(this, todo.id)} />
                         })}
                     </tbody>
                 </table>
@@ -30,8 +31,12 @@ class TableTodos extends React.Component {
 
     handleDelete(id) {
         this.props.deleteTodo(id)
-
     }
+
+    handleToggleComplete(id) {
+        this.props.toggleComplete(id)
+    }
+
 }
 
 export default TableTodos;

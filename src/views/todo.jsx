@@ -8,6 +8,7 @@ const storage = new Stroage('todos')
 class Todo extends Component {
     constructor(props) {
         super(props)
+
         this.state = {
             todos: storage.get(),
         }
@@ -29,7 +30,7 @@ class Todo extends Component {
                     </div>
                     <div className="app-container d-flex align-items-center justify-content-center flex-column ng-scope ng-binding" ng-app="myApp" ng-controller="myController">
                         <FormTodo todos={this.state.todos} addTodo={this.addToDo} />
-                        <TableTodos todos={this.state.todos} deleteTodo={this.deleteTodo.bind(this)} />
+                        <TableTodos todos={this.state.todos} deleteTodo={this.deleteTodo.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
                     </div>
 
                 </section>
@@ -50,6 +51,21 @@ class Todo extends Component {
         this.setState({
             todos: todos
         })
+    }
+
+    toggleComplete(id) {
+        const todos = storage.get();
+        const todo = todos.find(todo => todo.id === id);
+        if (!todo) {
+            return alert('Todo not found')
+        }
+
+        todo.completed = !todo.completed;
+
+        storage.clear();
+        storage.add(todos)
+        this.setState({ todos: todos })
+
     }
 
 

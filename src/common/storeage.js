@@ -5,30 +5,35 @@ class Stroage {
     }
 
     add(value) {
-        localStorage.setItem(this.key, value);
+        // if (typeof value )
+        localStorage.setItem(this.key, JSON.stringify(value));
     }
 
 
 
     get() {
         const items = localStorage.getItem(this.key);
-        return JSON.parse(items) || []
+        if (!items) return [];
+        const json = JSON.parse(items)
+
+        return json
     }
 
     addTodo(todo) {
         const items = this.get()
         items.push(todo);
-        this.add(JSON.stringify(items));
+        this.add(items);
     }
 
     deleteOne(id) {
         const items = this.get();
         const newItems = items.filter(item => item.id !== id);
-        this.add(JSON.stringify(newItems));
+        this.add(newItems);
     }
 
+
     clear() {
-        localStorage.setItem(this.key, JSON.stringify([]));
+        this.add([])
     }
 
 

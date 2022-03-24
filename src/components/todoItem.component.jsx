@@ -22,9 +22,9 @@ function TodoItem(props) {
                         <i className="fa fa-trash"></i>
                     </button>
                     {/* button check */}
-                    {todo.completed ? <button type="button" className="btn btn-warning" >
+                    {todo.completed ? <button type="button" className="btn btn-warning" onClick={props.toggleHandle} >
                         <i className="fa fa-times"></i>
-                    </button> : <button type="button" className="btn btn-success" >
+                    </button> : <button type="button" className="btn btn-success" onClick={props.toggleHandle} >
                         <i className="fa fa-check"></i>
                     </button>}
                 </div>
