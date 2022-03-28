@@ -5,6 +5,7 @@ import Todo from './views/todo';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import Footer from './components/Footer.component';
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,7 @@ function App() {
       </header>
       <Todo />
       <ToggleTheme />
+      <Footer />
     </div>
   );
 }
