@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 # Demo 💻
 > https://sleepy-fortress-08683.herokuapp.com
-![Demo](https://i.imgur.com/uKhfZ0k.png)
+![Demo](https://i.imgur.com/mEOHrkT.png)
 ### `npm start`
 
 Runs the app in the development mode.\
