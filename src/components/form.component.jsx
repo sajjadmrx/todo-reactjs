@@ -36,7 +36,7 @@ class FormTodo extends React.Component {
             completed: false
         }
         this.props.addTodo(todo)
-        // this.props
+        e.target.reset();
     }
 }
 
