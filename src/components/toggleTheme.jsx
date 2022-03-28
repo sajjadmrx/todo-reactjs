@@ -19,7 +19,7 @@ function ToggleTheme() {
         boxShadow: '0 0 5px #ccc',
         fontSize: '14px',
     }
-    handleToggle(false)
+    // handleToggle(false)
     return (
         <div style={style}  >
             <button className="btn btn-primary" onClick={handleToggle}>
@@ -30,7 +30,7 @@ function ToggleTheme() {
 }
 function handleToggle(toggle = true) {
     const currentTheme = themeStorage.get()
-    console.log(currentTheme)
+
     let nextTheme = ''
     if (toggle) {
         nextTheme = currentTheme === 'dark-theme' ? 'light-theme' : 'dark-theme'
@@ -38,8 +38,9 @@ function handleToggle(toggle = true) {
     } else {
         nextTheme = currentTheme
     }
-
-    document.body.classList.remove(currentTheme)
-    document.body.classList.toggle(nextTheme)
+    if (document.body) {
+        document.body.classList?.remove(currentTheme)
+        document.body.classList?.toggle(nextTheme)
+    }
 }
 export default ToggleTheme;

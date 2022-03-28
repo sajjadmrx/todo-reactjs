@@ -16,7 +16,9 @@ class Todo extends Component {
         }
 
     }
-
+    componentDidUpdate() {
+        //TODO: 
+    }
     render() {
         return (
             <div>
@@ -24,10 +26,9 @@ class Todo extends Component {
                     <div className="row py-lg-5">
                         <div className="col-lg-6 col-md-8 mx-auto">
                             <h1 className="fw-light">TODO APP</h1>
-                            <p className="lead text-muted">
+                            <p className="lead">
                                 A simple todo app with react and bootstrap
                             </p>
-
                         </div>
                     </div>
                     <div className="app-container d-flex align-items-center justify-content-center flex-column ng-scope ng-binding" ng-app="myApp" ng-controller="myController">
@@ -77,7 +78,6 @@ class Todo extends Component {
 
     update(todoUpdated) {
         const todos = todoQuerys.getAll()
-
         const index = todos.findIndex(todo => todo.id === todoUpdated.id)
         todos[index] = todoUpdated
         todoQuerys.deleteAll()
