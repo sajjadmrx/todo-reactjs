@@ -17,7 +17,10 @@ class Todo extends Component {
 
     }
     componentDidUpdate() {
-        //TODO: 
+        console.log(`
+        State Updated ⚒️
+        `)
+        todoQuerys.db.add(this.state.todos)
     }
     render() {
         return (
@@ -50,7 +53,7 @@ class Todo extends Component {
         this.setState({
             todos: oldTodos
         })
-        todoQuerys.addTodo(todo)
+        // todoQuerys.addTodo(todo)
     }
 
     deleteTodo(id) {
@@ -70,8 +73,8 @@ class Todo extends Component {
 
         todo.completed = !todo.completed;
 
-        todoQuerys.deleteAll();
-        todoQuerys.db.add(todos)
+        // todoQuerys.deleteAll();
+        // todoQuerys.db.add(todos)
         this.setState({ todos: sortWithCompleted(todos) })
 
     }
@@ -81,7 +84,7 @@ class Todo extends Component {
         const index = todos.findIndex(todo => todo.id === todoUpdated.id)
         todos[index] = todoUpdated
         todoQuerys.deleteAll()
-        todoQuerys.db.add(todos)
+        // todoQuerys.db.add(todos)
         this.setState({ todos: sortWithCreatedAtAndCompleted(todos) })
     }
 
